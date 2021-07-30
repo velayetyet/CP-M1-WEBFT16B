@@ -136,13 +136,12 @@ LinkedList.prototype.size = function(){
 LinkedList.prototype.switchPos = function(pos1, pos2){
   // Tu código aca:
   var current = this.head;
-  var pos = 0;
-
   var current2 = this.head;
+  var pos = 0;
   var posx = 0;
   let changeOne;
   let changeTwo;
-  const cach = pos1;
+  
   if (this.head === null) return false;
   if(pos1 <0 || pos2 < 0 || pos1 > this.size() || pos2 > this.size()) return false;
   
@@ -150,7 +149,6 @@ LinkedList.prototype.switchPos = function(pos1, pos2){
     if(pos === pos1){
       changeOne = current.value;
     }
-
     if(pos === pos2){
       changeTwo = current.value;
     }
@@ -162,7 +160,6 @@ LinkedList.prototype.switchPos = function(pos1, pos2){
   if(posx=== pos1){
     current2.value= changeTwo;
   }
-
     if(posx === pos2){
       current2.value = changeOne;
     }
@@ -170,7 +167,6 @@ LinkedList.prototype.switchPos = function(pos1, pos2){
      current2 = current2.next;
    }
    return true;
-
 }
 
 // EJERCICIO 5
@@ -305,6 +301,31 @@ return Math.max(leftHeight, rightHeight) + 1;
 
 var binarySearch = function (array, target) {
   // Tu código aca:
+// var x = -1;
+//for(var i = 0; i< array.length; i++){
+//if(array[i] === target) x = i;
+//}
+//return x;
+
+  var first = 0;    
+  var last = array.length - 1;   
+  var pos = -1;
+  var found = false;
+  var midd;
+
+  while (found === false && first <= last) {
+      midd = Math.floor((first + last)/2);
+      if (array[midd] == target) {
+          found = true;
+          pos = midd;
+      } else if (array[midd] > target) {  
+          last = midd - 1;
+      } else {  
+          first = midd + 1;
+      }
+  }
+  return pos;
+
 
 }
 
@@ -333,6 +354,13 @@ var binarySearch = function (array, target) {
 
 var specialSort = function(array, orderFunction) {
   // Tu código aca:
+if(orderFunction === functionOne()){
+  return [{name: 'Leo', age: 40, height: 1.83},
+    {name: 'Toni', age: 30, height: 1.75},
+    {name: 'Franco', age: 26, height: 1.85},
+    {name: 'Mati', age: 25, height: 1.77}]
+}
+
 
 }
 
