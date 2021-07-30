@@ -39,7 +39,17 @@ const {
 
 var isAncestor = function(genealogyTree, ancestor, descendant){
   // Tu código aca:
-
+  var answer = false;
+  let prevAncestor;
+    for(const property in genealogyTree){
+      if(genealogyTree[property].includes(descendant)){
+        prevAncestor =property;
+       answer = true;
+      }
+    }
+  return answer;
+    //return isAncestor(genealogyTree, ancestor,prevAncestor)
+     console.log(prevAncestor)
 }
 
 
@@ -241,6 +251,8 @@ var mergeLinkedLists = function(linkedListOne, linkedListTwo){
 var cardGame = function(playerOneCards, playerTwoCards){
   // Tu código aca:
 
+// Sigo sin entender bien las Queues pero voy a repasar.... =(
+
 }
 
 // ---------------
@@ -354,14 +366,23 @@ var binarySearch = function (array, target) {
 
 var specialSort = function(array, orderFunction) {
   // Tu código aca:
-if(orderFunction === functionOne()){
-  return [{name: 'Leo', age: 40, height: 1.83},
-    {name: 'Toni', age: 30, height: 1.75},
-    {name: 'Franco', age: 26, height: 1.85},
-    {name: 'Mati', age: 25, height: 1.77}]
-}
+var sort = true;
 
-
+while (sort) {
+  sort = false;
+  var i = 0
+while (i < array.length - 1 ) {
+if (orderFunction(array[i], array[i + 1]) === -1) {
+   var change = array[i];
+  array[i] = array[i + 1];
+  array[i + 1] = change;
+  sort = true;
+      }
+   i++
+   }
+  }
+  console.log(array);
+  return array;
 }
 
 // ----- Closures -----
