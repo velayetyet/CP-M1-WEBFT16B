@@ -77,6 +77,16 @@ var isAncestor = function(genealogyTree, ancestor, descendant){
 
 function secuenciaHenry(obj, n) {
   // Tu código aca:
+  var henryZ = obj['first'];
+  var henryO = 0;
+  for (const property in obj) {
+ henryO++;
+}
+  if(n == 0) return henryZ;
+  if(n == 1) return henryO;
+  if(n < 0) return null; 
+   
+return secuenciaHenry(obj,n-1) * secuenciaHenry(obj,n-2) - secuenciaHenry(obj, n-2);
 
 }
 
@@ -98,7 +108,13 @@ function secuenciaHenry(obj, n) {
 
 LinkedList.prototype.size = function(){
   // Tu código aca:
-
+  var current = this.head;
+  var count = 0;
+  while(current){
+   count ++;
+    current = current.next;
+  }
+  return count;
 }
 
 
@@ -119,6 +135,41 @@ LinkedList.prototype.size = function(){
 
 LinkedList.prototype.switchPos = function(pos1, pos2){
   // Tu código aca:
+  var current = this.head;
+  var pos = 0;
+
+  var current2 = this.head;
+  var posx = 0;
+  let changeOne;
+  let changeTwo;
+  const cach = pos1;
+  if (this.head === null) return false;
+  if(pos1 <0 || pos2 < 0 || pos1 > this.size() || pos2 > this.size()) return false;
+  
+  while(current){
+    if(pos === pos1){
+      changeOne = current.value;
+    }
+
+    if(pos === pos2){
+      changeTwo = current.value;
+    }
+    pos ++;
+     current = current.next;
+   }
+
+   while(current2){
+  if(posx=== pos1){
+    current2.value= changeTwo;
+  }
+
+    if(posx === pos2){
+      current2.value = changeOne;
+    }
+    posx ++;
+     current2 = current2.next;
+   }
+   return true;
 
 }
 
@@ -135,7 +186,17 @@ LinkedList.prototype.switchPos = function(pos1, pos2){
 // Continuando con el nodo 2 de la lista 2, conectandose con el nodo 2 de la lista 2.
 var mergeLinkedLists = function(linkedListOne, linkedListTwo){
   // Tu código aca:
+  var newList = new LinkedList();
+  var curr1 = linkedListOne.head;
+  var curr2 = linkedListTwo.head;
 
+  while (curr1,curr2 != null) {
+    newList.add(curr1.value)
+    newList.add(curr2.value)
+    curr1 = curr1.next;
+    curr2 = curr2.next;
+  }
+  return newList;
 }
 
 
@@ -207,6 +268,21 @@ var cardGame = function(playerOneCards, playerTwoCards){
 
 BinarySearchTree.prototype.height = function(){
   // Tu código aca:
+  var leftHeight = 0;
+  var rightHeight = 0;
+if(this.head === null) return 0;
+
+if(this.left === null && this.right === null) return 1;
+
+if(this.left  === null) return this.right.height() + 1;
+
+if(this.right === null) return this.left.height() + 1;
+
+leftHeight = this.left.height();
+
+rightHeight = this.right.height();
+
+return Math.max(leftHeight, rightHeight) + 1;
 
 }
 
@@ -290,7 +366,18 @@ var specialSort = function(array, orderFunction) {
 
 function closureDetect(symptoms, min) {
   // Tu código aca:
-
+  return function (person) {
+    var numSym = 0;
+    var y = 0
+while( y < symptoms.length){
+  if (symptoms.includes(person.symptoms[y])) {
+    numSym++;
+  }
+  y++;
+}
+    if (numSym >= min) return true;
+    return false;
+  }
 }
 
 // -------------------
